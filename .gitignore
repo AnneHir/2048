@@ -12,7 +12,6 @@ jmx.log
 derby.log
 .gradle
 argfile*
-pom.xml
 activemq-data/
 
 /build
