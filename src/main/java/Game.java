@@ -89,6 +89,9 @@ public class Game {
         play();
         break;
     }
+  }
+  public void fold(){
+
 
   }
 }
