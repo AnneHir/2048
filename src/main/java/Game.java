@@ -76,6 +76,7 @@ public class Game {
     int direction = scan.nextInt();
 
     create();
+    extract();
 
     switch (direction) {
       case 8:
@@ -97,19 +98,23 @@ public class Game {
     }
   }
 
+  //list with all coordinates
   private void create() {
     for (int row = 0; row < board.length; row++) {
       for (int column = 0; column < board.length; column++) {
         Tuple co = new Tuple(row, column);
         allCo.add(co);
       }
-    }}
+    }
+  }
 
-/*private void extract(){
-  for (int i = 0; i < allCo.size(); i++) {
-    List sList = allCo.subList(i, i + 4);
-    System.out.println(sList);
-  }*/
+
+  private void extract() {
+    for (int i = 0; i < allCo.size(); i+=4) {
+      List sList = allCo.subList(i, i + 4);
+      System.out.println(sList);
+    }
+  }
 }
 
 
