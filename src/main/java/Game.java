@@ -93,6 +93,7 @@ public class Game {
         break;
       case 5:
         board[0][0]=2048;//win
+        break;
       default:
         System.out.println("wrong choice. choose again");
         play();
