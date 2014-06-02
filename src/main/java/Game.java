@@ -91,6 +91,8 @@ public class Game {
       case 4:
         System.out.println("left");
         break;
+      case 5:
+        board[0][0]=2048;//win
       default:
         System.out.println("wrong choice. choose again");
         play();
@@ -111,8 +113,9 @@ public class Game {
 
   private void extract() {
     for (int i = 0; i < allCo.size(); i+=4) {
-      List sList = allCo.subList(i, i + 4);
-      System.out.println(sList);
+      List subRow = allCo.subList(i, i + 4);
+      subRow.move();
+      subRow = board;
     }
   }
 }
