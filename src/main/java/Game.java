@@ -4,6 +4,8 @@
  * All rights reserved.
  */
 
+import com.sun.rowset.internal.Row;
+
 import java.util.*;
 
 /**
@@ -111,12 +113,11 @@ public class Game {
     }
   }
 
-
   private void extract() {
     for (int i = 0; i < allCo.size(); i+=4) {
-      List subRow = allCo.subList(i, i + 4);
-      subRow.move();
-      subRow = board;
+      List Row = allCo.subList(i, i + 4);
+      Row.move();
+      //put board back together
     }
   }
 }
