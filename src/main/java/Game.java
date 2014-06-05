@@ -23,7 +23,6 @@ public class Game {
   MyArrayList allCo = new MyArrayList();
 
 
-
   public void start() {
 
     newTwo();
@@ -78,19 +77,44 @@ public class Game {
     Scanner scan = new Scanner(System.in);
     int direction = scan.nextInt();
 
-    create();
-
     switch (direction) {
       case 8:
+        for (int column = board.length-1; column >= 0; column--) {
+          for (int row = board.length-1; row >= 0; row--) {
+            Tuple co = new Tuple(row, column);
+            allCo.add(co);
+          }
+        }
         System.out.println("up");
+        extract();
         break;
       case 2:
+        for (int column = 0; column < board.length; column++) {
+          for (int row = 0; row < board.length; row++) {
+            Tuple co = new Tuple(row, column);
+            allCo.add(co);
+          }
+        }
         System.out.println("down");
+        extract();
         break;
       case 6:
+        for (int row = board.length-1; row >= 0; row--) {
+          for (int column = board.length-1; column >= 0; column--) {
+            Tuple co = new Tuple(row, column);
+            allCo.add(co);
+          }
+        }
         System.out.println("right");
+        extract();
         break;
       case 4:
+        for (int row = 0; row < board.length; row++) {
+          for (int column = 0; column < board.length; column++) {
+            Tuple co = new Tuple(row, column);
+            allCo.add(co);
+          }
+        }
         System.out.println("left");
         extract();
         break;
@@ -106,25 +130,52 @@ public class Game {
 
   //list with all coordinates
   private void create() {
+    //horizontal
     for (int row = 0; row < board.length; row++) {
       for (int column = 0; column < board.length; column++) {
-        int co = board[row][column];
+        Tuple co = new Tuple(row, column);
         allCo.add(co);
-
+      }
+    }
+    for (int row = board.length-1; row >= 0; row--) {
+      for (int column = board.length-1; column >= 0; column--) {
+        Tuple co = new Tuple(row, column);
+        allCo.add(co);
+      }
+    }
+    //vertical
+    for (int column = 0; column < board.length; column++) {
+      for (int row = 0; row < board.length; row++) {
+        Tuple co = new Tuple(row, column);
+        allCo.add(co);
+      }
+    }
+    for (int column = board.length-1; column >= 0; column--) {
+      for (int row = board.length-1; row >= 0; row--) {
+        Tuple co = new Tuple(row, column);
+        allCo.add(co);
       }
     }
   }
 
   public void extract() {
     for (int i = 0; i < allCo.size(); i += 4) {
-      List Row = allCo.subList(i, i + 4);
+      List<Tuple> row = allCo.subList(i, i + 4);
+        for (Tuple tuple: row){
+          List<Integer> newRow = new ArrayList();
+          newRow.add(board[tuple.x][tuple.y]);
+          newRow = fold(newRow);
+        }
 
 
-      System.out.println(Row);
-    }}
-
-
+    }
   }
+
+  private List<Integer> fold(List<Integer> newRow) {
+    return null;
+  }
+
+
 
 
 
@@ -167,5 +218,5 @@ int[] newRow = move(row);
     return new int[0];
   }*/
 
-
+}
 
