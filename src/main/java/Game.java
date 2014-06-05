@@ -4,7 +4,6 @@
  * All rights reserved.
  */
 
-import com.sun.rowset.internal.Row;
 
 import java.util.*;
 
@@ -21,7 +20,9 @@ public class Game {
   }
 
   int[][] board = new int[4][4];
-  List<Tuple> allCo = new ArrayList<Tuple>();
+  MyArrayList allCo = new MyArrayList();
+
+
 
   public void start() {
 
@@ -94,7 +95,7 @@ public class Game {
         System.out.println("left");
         break;
       case 5:
-        board[0][0]=2048;//win
+        board[0][0] = 2048;//win
         break;
       default:
         System.out.println("wrong choice. choose again");
@@ -111,20 +112,19 @@ public class Game {
         allCo.add(co);
       }
     }
-  }}
+  }
 
  /* private void extract() {
-    for (int i = 0; i < allCo.size(); i+=4) {
+    for (int i = 0; i < allCo.size(); i += 4) {
       List Row = allCo.subList(i, i + 4);
-      Row.move();
+      Row.fold();//
       //put board back together
     }
   }
-}
 
 
 
-  public void horizontal(){
+ /* public void horizontal(){
     for (int x = 0; x < 4; x++) {
       int[] row = new int[4];
       int i = 0;
@@ -162,4 +162,4 @@ int[] newRow = move(row);
   }*/
 
 
-
+}
