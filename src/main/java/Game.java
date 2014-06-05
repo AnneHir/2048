@@ -78,7 +78,7 @@ public class Game {
     int direction = scan.nextInt();
 
     create();
-    extract();
+    //extract();
 
     switch (direction) {
       case 8:
@@ -111,9 +111,9 @@ public class Game {
         allCo.add(co);
       }
     }
-  }
+  }}
 
-  private void extract() {
+ /* private void extract() {
     for (int i = 0; i < allCo.size(); i+=4) {
       List Row = allCo.subList(i, i + 4);
       Row.move();
@@ -124,7 +124,7 @@ public class Game {
 
 
 
- /* public void horizontal(){
+  public void horizontal(){
     for (int x = 0; x < 4; x++) {
       int[] row = new int[4];
       int i = 0;
