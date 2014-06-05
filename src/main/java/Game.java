@@ -106,26 +106,27 @@ public class Game {
 
   //list with all coordinates
   private void create() {
-    for (int row = 0; row < board.length; row++) {
+    for (int[] aBoard : board) {
       for (int column = 0; column < board.length; column++) {
-        int co = board[row][column];
+        int co = aBoard[column];
         allCo.add(co);
 
       }
     }
   }
 
-  private void extract() {
+  public void extract() {
     for (int i = 0; i < allCo.size(); i += 4) {
       List Row = allCo.subList(i, i + 4);
 
+
       System.out.println(Row);
-  //    Row.fold();
-      //put board back together
-    }
+    }}
+
+
   }
 
-//  private
+
 
 
 
@@ -167,4 +168,4 @@ int[] newRow = move(row);
   }*/
 
 
-}
+
