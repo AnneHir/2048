@@ -106,9 +106,9 @@ public class Game {
 
   //list with all coordinates
   private void create() {
-    for (int[] aBoard : board) {
+    for (int row = 0; row < board.length; row++) {
       for (int column = 0; column < board.length; column++) {
-        int co = aBoard[column];
+        int co = board[row][column];
         allCo.add(co);
 
       }
