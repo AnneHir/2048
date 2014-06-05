@@ -79,7 +79,6 @@ public class Game {
     int direction = scan.nextInt();
 
     create();
-    extract();
 
     switch (direction) {
       case 8:
@@ -93,6 +92,7 @@ public class Game {
         break;
       case 4:
         System.out.println("left");
+        extract();
         break;
       case 5:
         board[0][0] = 2048;//win
@@ -108,8 +108,9 @@ public class Game {
   private void create() {
     for (int row = 0; row < board.length; row++) {
       for (int column = 0; column < board.length; column++) {
-        Tuple co = new Tuple(row, column);
+        int co = board[row][column];
         allCo.add(co);
+
       }
     }
   }
@@ -117,10 +118,14 @@ public class Game {
   private void extract() {
     for (int i = 0; i < allCo.size(); i += 4) {
       List Row = allCo.subList(i, i + 4);
-      //Row.fold();
+
+      System.out.println(Row);
+  //    Row.fold();
       //put board back together
     }
   }
+
+//  private
 
 
 
