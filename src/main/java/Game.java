@@ -79,8 +79,8 @@ public class Game {
 
     switch (direction) {
       case 8:
-        for (int column = board.length-1; column >= 0; column--) {
-          for (int row = board.length-1; row >= 0; row--) {
+        for (int column = board.length - 1; column >= 0; column--) {
+          for (int row = board.length - 1; row >= 0; row--) {
             Tuple co = new Tuple(row, column);
             allCo.add(co);
           }
@@ -99,8 +99,8 @@ public class Game {
         extract();
         break;
       case 6:
-        for (int row = board.length-1; row >= 0; row--) {
-          for (int column = board.length-1; column >= 0; column--) {
+        for (int row = board.length - 1; row >= 0; row--) {
+          for (int column = board.length - 1; column >= 0; column--) {
             Tuple co = new Tuple(row, column);
             allCo.add(co);
           }
@@ -137,8 +137,8 @@ public class Game {
         allCo.add(co);
       }
     }
-    for (int row = board.length-1; row >= 0; row--) {
-      for (int column = board.length-1; column >= 0; column--) {
+    for (int row = board.length - 1; row >= 0; row--) {
+      for (int column = board.length - 1; column >= 0; column--) {
         Tuple co = new Tuple(row, column);
         allCo.add(co);
       }
@@ -150,8 +150,8 @@ public class Game {
         allCo.add(co);
       }
     }
-    for (int column = board.length-1; column >= 0; column--) {
-      for (int row = board.length-1; row >= 0; row--) {
+    for (int column = board.length - 1; column >= 0; column--) {
+      for (int row = board.length - 1; row >= 0; row--) {
         Tuple co = new Tuple(row, column);
         allCo.add(co);
       }
@@ -161,62 +161,54 @@ public class Game {
   public void extract() {
     for (int i = 0; i < allCo.size(); i += 4) {
       List<Tuple> row = allCo.subList(i, i + 4);
-        for (Tuple tuple: row){
-          List<Integer> newRow = new ArrayList();
-          newRow.add(board[tuple.x][tuple.y]);
-          newRow = fold(newRow);
-        }
+        List<Integer> newRow = new ArrayList();
+      for (Tuple tuple : row) {
+        newRow.add(board[tuple.x][tuple.y]);
+      }
+        newRow = fold(newRow);
+      for(int j=0; j<newRow.size();j++){
 
-
-    }
-  }
-
-  private List<Integer> fold(List<Integer> newRow) {
-    return null;
-  }
-
-
-
-
-
-
-
- /* public void horizontal(){
-    for (int x = 0; x < 4; x++) {
-      int[] row = new int[4];
-      int i = 0;
-      for (int y = 0; y < 4 ; y++) {
-        row[i++]=board[x][y];
+        //  board[tuple.x][tuple.y]= j;
 
       }
 
-int[] newRow = move(row);
-      i = 0;
-      for (int y = 0; y < 4; y++) {
-        board[x][y]=newRow[i++];
-      }
+
     }
   }
 
-  public  void vertical(){
-    for (int y = 0; y < 4; y++) {
-    int[] row = new int[4];
-    int i = 0;
-    for (int x = 0; x < 4 ; x++) {
-      row[i++]=board[x][y];
+  public List<Integer> fold(List<Integer> newRow) {
+    List<Integer> newList = new ArrayList<Integer>();
+    List<Integer> newNewList = new ArrayList<Integer>();
 
+    for (int i : newRow) {
+      if (i != 0) {
+        newList.add(i);
+      }
+    }
+    if (newList.size() != 4) {
+      int fill = 4 - newList.size();
+      for (int j = 0; j < fill; j++) {
+        newList.add(0);
+      }
     }
 
-    int[] newRow = move(row);
-    i = 0;
-    for (int x = 0; x < 4; x++) {
-      board[x][y]=newRow[i++];
+    for (int i = 0; i < newList.size(); i++) {
+      if (i+1 < newList.size() && newList.get(i).equals(newList.get(i+1))) {
+        newNewList.add(newList.get(i) +newList.get(i+1));
+        i++;
+      } else {
+        newNewList.add(newList.get(i));
+      }
     }
-  }}
+    if (newNewList.size() != 4) {
+      int fill = 4 - newNewList.size();
+      for (int j = 0; j < fill; j++) {
+        newNewList.add(0);
+      }
+    }
+    return newNewList;
 
-  private int[] move(int[] row) {
-    return new int[0];
-  }*/
+
+  }
 
 }
-
