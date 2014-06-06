@@ -30,10 +30,19 @@ public class Game {
     drawBoard();
     System.out.println("choose direction every time");
     play();
-    create();
+
 
 
   }
+ public void playAgain(){
+
+
+   extract();
+   newTwo();
+   drawBoard();
+   play();
+
+ }
 
   public void newTwo() {
 
@@ -76,27 +85,28 @@ public class Game {
   public void choice() {
     Scanner scan = new Scanner(System.in);
     int direction = scan.nextInt();
+        allCo.clear();
 
     switch (direction) {
       case 8:
-        for (int column = board.length - 1; column >= 0; column--) {
-          for (int row = board.length - 1; row >= 0; row--) {
-            Tuple co = new Tuple(row, column);
-            allCo.add(co);
-          }
-        }
-        System.out.println("up");
-        extract();
-        break;
-      case 2:
         for (int column = 0; column < board.length; column++) {
           for (int row = 0; row < board.length; row++) {
             Tuple co = new Tuple(row, column);
             allCo.add(co);
           }
         }
+        System.out.println("up");
+         playAgain();
+        break;
+      case 2:
+        for (int column = board.length - 1; column >= 0; column--) {
+          for (int row = board.length - 1; row >= 0; row--) {
+            Tuple co = new Tuple(row, column);
+            allCo.add(co);
+          }
+        }
         System.out.println("down");
-        extract();
+        playAgain();
         break;
       case 6:
         for (int row = board.length - 1; row >= 0; row--) {
@@ -106,7 +116,7 @@ public class Game {
           }
         }
         System.out.println("right");
-        extract();
+        playAgain();
         break;
       case 4:
         for (int row = 0; row < board.length; row++) {
@@ -116,10 +126,7 @@ public class Game {
           }
         }
         System.out.println("left");
-        extract();
-        break;
-      case 5:
-        board[0][0] = 2048;//win
+        playAgain();
         break;
       default:
         System.out.println("wrong choice. choose again");
@@ -161,20 +168,26 @@ public class Game {
   public void extract() {
     for (int i = 0; i < allCo.size(); i += 4) {
       List<Tuple> row = allCo.subList(i, i + 4);
-        List<Integer> newRow = new ArrayList();
+      List<Integer> newRow = new ArrayList();
       for (Tuple tuple : row) {
         newRow.add(board[tuple.x][tuple.y]);
       }
-        newRow = fold(newRow);
-      for(int j=0; j<newRow.size();j++){
+      newRow = fold(newRow);
 
-        //  board[tuple.x][tuple.y]= j;
+      for (int j = 0; j < newRow.size(); j++) {
+        Tuple tuple = row.get(j);
+        board[tuple.x][tuple.y]=newRow.get(j);
+
 
       }
 
-
     }
-  }
+      }
+
+
+
+
+
 
   public List<Integer> fold(List<Integer> newRow) {
     List<Integer> newList = new ArrayList<Integer>();
@@ -193,8 +206,8 @@ public class Game {
     }
 
     for (int i = 0; i < newList.size(); i++) {
-      if (i+1 < newList.size() && newList.get(i).equals(newList.get(i+1))) {
-        newNewList.add(newList.get(i) +newList.get(i+1));
+      if (i + 1 < newList.size() && newList.get(i).equals(newList.get(i + 1))) {
+        newNewList.add(newList.get(i) + newList.get(i + 1));
         i++;
       } else {
         newNewList.add(newList.get(i));
