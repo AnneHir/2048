@@ -14,7 +14,8 @@ import java.util.ArrayList;
  */
 
 //set size
-public class MyArrayList extends ArrayList {
+public class MyArrayList extends ArrayList<Tuple> {
+
   public boolean add(Tuple i) {
     if (this.size() < 16) {
       return super.add(i);

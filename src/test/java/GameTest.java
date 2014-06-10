@@ -8,7 +8,7 @@ public class GameTest {
 Game game;
   @org.junit.Before
   public void setUp() throws Exception {
-      game = new Game();
+      game = Game.getInstance();
   }
 
   @org.junit.Test
