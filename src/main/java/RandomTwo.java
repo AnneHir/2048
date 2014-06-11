@@ -15,12 +15,11 @@ import java.util.Random;
  */
 public class RandomTwo {
 
-  public void newTwo() {
-
-   Game game = Game.getInstance();
+  public void newTwo(int[][] board) {
 
 
-    if (freeSpace() < 1) {
+
+    if (freeSpace(board) < 1) {
       System.out.println("you've lost");
     }
 
@@ -30,16 +29,15 @@ public class RandomTwo {
     do {
       x = place();
       y = place();
-    } while (game.getBoard()[x][y] > 0);
+    } while (board[x][y] > 0);
 //verschiedene Implementationen
-    game.getBoard()[x][y] = 2;
+    board[x][y] = 2;
   }
 
-public int freeSpace() {
+public int freeSpace(int[][] board) {
 
-  Game game = Game.getInstance();
 
-    for (int[] array : game.getBoard())
+    for (int[] array : board)
       for (int x : array)
         if (x < 2) {
           return 1;
