@@ -12,14 +12,18 @@
  */
 public class FinalTile {
 
-  public void win(int[][] board) {
+
+
+  public boolean win(int[][] board) {
     for (int[] array : board) {
       for (Integer number : array) {
-        if (number.equals(2048)) {
-          System.out.println("you've got 2048 but keep playing");
+        if (number.equals(16)) {
+          System.out.println("you've got 2048");
+          return false;
 
         }
       }
     }
+    return true;
   }
 }

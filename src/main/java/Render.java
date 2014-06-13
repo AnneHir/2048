@@ -4,17 +4,14 @@
  * All rights reserved.
  */
 
-import java.util.Arrays;
-
 /**
  * TODO: Comment
  *
  * @author anhi
  * @version $Id$
  */
-public class Print {
+public interface Render {
 
-  public void drawBoard(int[][] board) {
-    System.out.println(Arrays.deepToString(board).replaceAll("],", "],\r\n"));
-  }
+  public void drawBoard(int[][] board);
+
 }

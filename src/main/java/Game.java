@@ -5,8 +5,6 @@
  */
 
 
-import java.util.*;
-
 /**
  * TODO: Comment
  *
@@ -32,7 +30,7 @@ public class Game {
   Direction direction = new Direction();
   FinalTile finalTile = new FinalTile();
   Rows rows = new Rows();
-  Print render = new Print();
+  Render render;
 
 
   public static Game getInstance() {
@@ -48,6 +46,7 @@ public class Game {
 
     randomTwo.newTwo(board);
     randomTwo.newTwo(board);
+    render = new FirstBoard();
     render.drawBoard(board);
     System.out.println("choose direction every time");
     play();
@@ -56,17 +55,23 @@ public class Game {
 
   public void playAgain(MyArrayList arrayList) {
 
-    finalTile.win(board);
-    rows.extract(board, arrayList);
-    randomTwo.newTwo(board);
+    render = new SecondBoard();
+
+    while (finalTile.win(board)) {
+
+      rows.extract(board, arrayList);
+      randomTwo.newTwo(board);
+      render.drawBoard(board);
+      play();
+    }
     render.drawBoard(board);
-    play();
 
   }
 
 
   public void play() {
     MyArrayList arrayList = direction.choice();
+    // board[0][0]=2048;
     playAgain(arrayList);
   }
 
